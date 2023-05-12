@@ -15,6 +15,10 @@ public class Controller {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "Hello %s!. Welcome to Calculator API".formatted(name);
     }
+    @GetMapping("/add")
+    public double add(@RequestParam(value = "a", defaultValue = "0") double a, @RequestParam(value = "b", defaultValue = "0") double b) {
+        return a + b;
+    }
     @GetMapping("/")
     public double calculate(@RequestParam(value = "cal", defaultValue = "0") String expression) throws ScriptException {
         return eval(expression);
@@ -87,4 +91,5 @@ public class Controller {
             default -> throw new IllegalArgumentException("Invalid operator: " + operator);
         }
     }
+
 }
